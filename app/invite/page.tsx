@@ -244,9 +244,10 @@ const styles = {
   spinner: {
     width: "40px",
     height: "40px",
-    border: "3px solid rgba(255,255,255,0.1)",
-    borderTop: "3px solid #8b5cf6",
-    borderRadius: "50%"
+    border: "3px solid rgba(237,234,226,0.12)",
+    borderTop: "3px solid #c6f24e",
+    borderRadius: "50%",
+    animation: "spin 0.8s linear infinite"
   },
   errorContainer: {
     padding: "20px 0"
@@ -259,7 +260,7 @@ const styles = {
     fontSize: "24px",
     fontWeight: 800,
     marginBottom: "10px",
-    color: "#ef4444"
+    color: "#ff6b3d"
   },
   cardContent: {
     display: "flex",
@@ -271,8 +272,8 @@ const styles = {
     width: "72px",
     height: "72px",
     borderRadius: "22px",
-    background: "rgba(139, 92, 246, 0.15)",
-    border: "1px solid rgba(139, 92, 246, 0.25)",
+    background: "rgba(198, 242, 78, 0.12)",
+    border: "1px solid rgba(198, 242, 78, 0.28)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -286,10 +287,10 @@ const styles = {
   },
   subtitle: {
     fontSize: "16px",
-    color: "#94a3b8"
+    color: "#8a938b"
   },
   highlight: {
-    color: "#c084fc",
+    color: "#c6f24e",
     textTransform: "uppercase" as const,
     fontWeight: 800,
     letterSpacing: "0.05em"
@@ -319,8 +320,8 @@ const styles = {
   },
   youBadge: {
     fontSize: "10px",
-    background: "#10b981",
-    color: "#fff",
+    background: "#c6f24e",
+    color: "#0a0c0b",
     padding: "2px 8px",
     borderRadius: "8px",
     fontWeight: 800,
