@@ -1,31 +1,38 @@
 /* ============================================================
-   WhooWon — "Tale of the Tape"
-   A high-end athletic-instrument design system.
-   Palette: obsidian + warm bone, dual competitor signals
-   (volt vs ember). Type: Anton / Archivo / JetBrains Mono.
+   WhooWon — "Tale of the Tape" (Light)
+   A high-end athletic-instrument design system on bright paper.
+   Light world, one dark instrument (the scoreboard). Dual
+   competitor signals: volt (you) vs ember (rival).
+   Type: Anton / Archivo / JetBrains Mono.
    ============================================================ */
 
 :root {
-  /* Surfaces */
-  --ink: #0a0c0b;
-  --graphite: #111513;
-  --graphite-2: #161b18;
-  --steel: #232a27;
-  --steel-2: #2f3833;
+  /* Light surfaces */
+  --paper: #f3f3ee;
+  --surface: #ffffff;
+  --surface-2: #fbfbf8;
+  --line: rgba(16, 20, 18, 0.12);
+  --line-soft: rgba(16, 20, 18, 0.06);
 
-  /* Ink on dark */
+  /* Ink on light */
+  --ink: #11150f;
+  --ink-dim: #343a33;
+  --muted: #6a716a;
+  --muted-dim: #9aa099;
+
+  /* Accents */
+  --volt: #c6f24e; /* fill / on-dark winner signal */
+  --volt-ink: #4f7a0d; /* green that stays readable as text on light */
+  --ember: #ff5a2e; /* the challenger */
+
+  /* The one dark instrument — Tale of the Tape */
+  --dark: #0e1210;
+  --dark-2: #171c19;
+  --dark-line: rgba(237, 234, 226, 0.12);
   --bone: #edeae2;
   --bone-dim: #c9c6bd;
-  --titanium: #8a938b;
-  --titanium-dim: #5d645e;
-
-  /* Competitor signals */
-  --volt: #c6f24e; /* the winner / live / "you" */
-  --volt-deep: #9bc52f;
-  --ember: #ff6b3d; /* the challenger */
-
-  --hairline: rgba(237, 234, 226, 0.1);
-  --hairline-soft: rgba(237, 234, 226, 0.06);
+  --bone-faint: #8a938b;
+  --steel-2: #39433c;
 
   --font-display: var(--font-anton), "Arial Narrow", sans-serif;
   --font-sans: var(--font-archivo), system-ui, sans-serif;
@@ -45,38 +52,38 @@ body {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden;
-  background: var(--ink);
-  color: var(--bone);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ambient court atmosphere — a faint overhead glow and a barely-there
-   measurement grid, like markings on a court seen at night. */
+/* Ambient court atmosphere — a faint chalk grid and the softest wash of
+   the two competitor colors at opposite corners. */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  background-color: var(--ink);
+  background-color: var(--paper);
   background-image:
     radial-gradient(
-      120% 80% at 78% -10%,
-      rgba(198, 242, 78, 0.08) 0%,
+      110% 75% at 80% -10%,
+      rgba(198, 242, 78, 0.22) 0%,
       transparent 45%
     ),
     radial-gradient(
-      90% 60% at 0% 110%,
-      rgba(255, 107, 61, 0.05) 0%,
+      90% 60% at -5% 108%,
+      rgba(255, 90, 46, 0.08) 0%,
       transparent 50%
     ),
     repeating-linear-gradient(
       to right,
       transparent 0,
       transparent calc(12.5% - 1px),
-      var(--hairline-soft) calc(12.5% - 1px),
-      var(--hairline-soft) 12.5%
+      var(--line-soft) calc(12.5% - 1px),
+      var(--line-soft) 12.5%
     );
 }
 
@@ -101,11 +108,11 @@ h4 {
   font-family: var(--font-sans);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--bone);
+  color: var(--ink);
 }
 
 p {
-  color: var(--titanium);
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -114,14 +121,14 @@ a {
   text-decoration: none;
 }
 
-/* Mono eyebrow with a leading tick — used to label sections like
-   instrument readouts. */
+/* Mono eyebrow with a leading tick — labels a section like an
+   instrument readout. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--titanium);
+  color: var(--muted);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -129,8 +136,8 @@ a {
 .eyebrow::before {
   content: "";
   width: 22px;
-  height: 1px;
-  background: var(--volt);
+  height: 2px;
+  background: var(--volt-ink);
 }
 
 .main-layout {
@@ -145,8 +152,8 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 18px var(--pad-x);
-  border-bottom: 1px solid var(--hairline);
-  background: rgba(10, 12, 11, 0.72);
+  border-bottom: 1px solid var(--line);
+  background: rgba(243, 243, 238, 0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   position: sticky;
@@ -163,6 +170,7 @@ a {
   font-size: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .brand-icon {
@@ -178,8 +186,7 @@ a {
   font-size: 20px;
   line-height: 1;
   padding-top: 2px;
-  box-shadow: 0 0 0 1px rgba(198, 242, 78, 0.4),
-    0 8px 22px rgba(198, 242, 78, 0.22);
+  box-shadow: 0 6px 16px rgba(155, 197, 47, 0.35);
 }
 
 .nav-links {
@@ -190,18 +197,18 @@ a {
 
 .nav-link {
   font-family: var(--font-mono);
-  color: var(--titanium);
+  color: var(--muted);
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   transition: color 0.2s;
 }
 .nav-link:hover {
-  color: var(--bone);
+  color: var(--ink);
 }
 
-/* Live status pill in the nav — ambient pulse, not decoration: it tells
-   you matches are being scored right now. */
+/* Live status pill — ambient pulse that says matches are being scored
+   right now, not decoration. */
 .nav-live {
   display: inline-flex;
   align-items: center;
@@ -210,17 +217,17 @@ a {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--bone-dim);
+  color: var(--ink-dim);
   padding: 7px 12px;
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--line);
   border-radius: 999px;
+  background: var(--surface);
 }
 .nav-live .dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--volt);
-  box-shadow: 0 0 0 0 rgba(198, 242, 78, 0.6);
+  background: var(--volt-ink);
   animation: livePulse 2s ease-out infinite;
 }
 
@@ -231,10 +238,10 @@ a {
   justify-content: center;
   gap: 10px;
   padding: 15px 26px;
-  background: var(--bone);
-  border: 1px solid var(--bone);
+  background: var(--ink);
+  border: 1px solid var(--ink);
   border-radius: 12px;
-  color: var(--ink);
+  color: var(--paper);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 800;
@@ -242,14 +249,15 @@ a {
   text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.18s ease, background 0.18s ease,
-    box-shadow 0.18s ease, color 0.18s ease;
+    box-shadow 0.18s ease, color 0.18s ease, border-color 0.18s ease;
   min-height: 50px;
 }
 .btn:hover {
   background: var(--volt);
   border-color: var(--volt);
+  color: var(--ink);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(198, 242, 78, 0.25);
+  box-shadow: 0 14px 28px rgba(155, 197, 47, 0.3);
 }
 .btn:active {
   transform: translateY(0);
@@ -257,24 +265,25 @@ a {
 
 .btn-secondary {
   background: transparent;
-  border: 1px solid var(--steel-2);
-  color: var(--bone);
+  border: 1px solid var(--line);
+  color: var(--ink);
 }
 .btn-secondary:hover {
   background: transparent;
-  border-color: var(--bone);
-  color: var(--bone);
+  border-color: var(--ink);
+  color: var(--ink);
   box-shadow: none;
 }
 
 /* ------------------------------- Cards -------------------------------- */
 .card {
-  background: var(--graphite);
-  border: 1px solid var(--steel);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 18px;
   padding: 32px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 18px 44px -24px rgba(16, 20, 18, 0.28);
 }
 
 /* ------------------------------- Hero --------------------------------- */
@@ -304,30 +313,31 @@ a {
   line-height: 0.84;
   letter-spacing: 0.005em;
   margin: 0;
+  color: var(--ink);
 }
 .hero h1 .line {
   display: block;
 }
-/* The middle word is hollowed out — a typographic layer that reads like a
-   stencil on athletic gear. */
+/* The middle word is hollowed to a stencil — a typographic layer like
+   print on athletic gear. */
 .hero h1 .outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--bone-dim);
+  -webkit-text-stroke: 1.5px var(--ink);
 }
 .hero h1 .dot {
-  color: var(--volt);
+  color: var(--ember);
 }
 
 .hero-sub {
   font-size: clamp(16px, 1.5vw, 19px);
   line-height: 1.55;
-  color: var(--bone-dim);
+  color: var(--ink-dim);
   max-width: 30ch;
 }
 .hero-sub .whoo {
-  color: var(--volt);
+  color: var(--volt-ink);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero-actions {
@@ -337,31 +347,34 @@ a {
   flex-wrap: wrap;
 }
 
-/* Tiny supporting readout under the CTA, mono, instrument-styled. */
+/* Supporting readout under the CTA — mono, instrument-styled. */
 .hero-meta {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--titanium-dim);
+  color: var(--muted);
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
 }
 .hero-meta b {
-  color: var(--bone-dim);
+  color: var(--ink);
   font-weight: 700;
 }
 
 /* --------------------- Signature: Tale of the Tape -------------------- */
+/* The single dark instrument on the page — self-contained dark tokens so
+   it reads correctly regardless of the surrounding light theme. */
 .tape {
   position: relative;
-  background: linear-gradient(180deg, var(--graphite-2), var(--graphite));
-  border: 1px solid var(--steel);
+  background: linear-gradient(180deg, var(--dark-2), var(--dark));
+  border: 1px solid rgba(237, 234, 226, 0.1);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(237, 234, 226, 0.04);
+  color: var(--bone);
+  box-shadow: 0 50px 90px -36px rgba(16, 20, 18, 0.55),
+    inset 0 1px 0 rgba(237, 234, 226, 0.06);
   animation: riseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
@@ -373,9 +386,9 @@ a {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--titanium);
+  color: var(--bone-faint);
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--dark-line);
 }
 .tape-rec {
   display: inline-flex;
@@ -388,10 +401,9 @@ a {
   height: 8px;
   border-radius: 50%;
   background: var(--ember);
-  animation: livePulse 2s ease-out infinite;
+  animation: livePulseEmber 2s ease-out infinite;
 }
 
-/* The matchup grid: side A · score · side B */
 .tape-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -417,15 +429,15 @@ a {
   font-family: var(--font-display);
   font-size: 26px;
   padding-top: 3px;
-  color: var(--ink);
+  color: var(--dark);
 }
 .fighter.you .fighter-badge {
   background: var(--volt);
-  box-shadow: 0 10px 24px rgba(198, 242, 78, 0.25);
+  box-shadow: 0 10px 24px rgba(198, 242, 78, 0.3);
 }
 .fighter.rival .fighter-badge {
   background: var(--ember);
-  box-shadow: 0 10px 24px rgba(255, 107, 61, 0.22);
+  box-shadow: 0 10px 24px rgba(255, 90, 46, 0.28);
 }
 .fighter-name {
   font-family: var(--font-sans);
@@ -438,11 +450,10 @@ a {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--titanium);
+  color: var(--bone-faint);
   text-transform: uppercase;
 }
 
-/* The big mono scoreboard numerals */
 .tape-score {
   display: flex;
   align-items: baseline;
@@ -460,18 +471,17 @@ a {
   color: var(--ember);
 }
 .tape-score .sep {
-  color: var(--titanium-dim);
+  color: var(--bone-faint);
   font-size: 0.5em;
   align-self: center;
 }
 
-/* Streak pip bar — encodes the last 7 results (won = filled). */
 .streak {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding-top: 18px;
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--dark-line);
 }
 .streak-label {
   display: flex;
@@ -480,7 +490,7 @@ a {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--titanium);
+  color: var(--bone-faint);
 }
 .streak-label .hot {
   color: var(--volt);
@@ -509,13 +519,13 @@ a {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--titanium-dim);
+  color: rgba(237, 234, 226, 0.4);
   text-align: center;
 }
 
 /* --------------------------- Spec sheet ------------------------------- */
 .specs {
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--line);
   padding: clamp(56px, 8vw, 96px) var(--pad-x);
   max-width: 1320px;
   margin: 0 auto;
@@ -536,6 +546,7 @@ a {
   font-size: clamp(34px, 5vw, 64px);
   line-height: 0.9;
   letter-spacing: 0.01em;
+  color: var(--ink);
 }
 .specs-head p {
   max-width: 34ch;
@@ -548,17 +559,17 @@ a {
   gap: clamp(16px, 4vw, 48px);
   align-items: start;
   padding: 30px 0;
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--line);
   transition: background 0.25s ease, padding-left 0.25s ease;
 }
 .spec-row:last-child {
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--line);
 }
 .spec-row:hover {
   background: linear-gradient(
     90deg,
-    rgba(198, 242, 78, 0.05),
-    transparent 60%
+    rgba(198, 242, 78, 0.28),
+    transparent 62%
   );
   padding-left: 12px;
 }
@@ -566,7 +577,7 @@ a {
   font-family: var(--font-mono);
   font-size: 14px;
   letter-spacing: 0.1em;
-  color: var(--volt);
+  color: var(--volt-ink);
   padding-top: 6px;
 }
 .spec-title {
@@ -574,10 +585,10 @@ a {
   font-weight: 800;
   font-size: clamp(20px, 2.4vw, 28px);
   letter-spacing: -0.01em;
-  color: var(--bone);
+  color: var(--ink);
 }
 .spec-body {
-  color: var(--titanium);
+  color: var(--muted);
   font-size: 15px;
   line-height: 1.6;
   max-width: 48ch;
@@ -585,7 +596,7 @@ a {
 
 /* ----------------------------- Download ------------------------------- */
 .download {
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--line);
   padding: clamp(64px, 9vw, 120px) var(--pad-x);
   max-width: 1320px;
   margin: 0 auto;
@@ -604,9 +615,10 @@ a {
   font-size: clamp(44px, 8vw, 104px);
   line-height: 0.86;
   letter-spacing: 0.01em;
+  color: var(--ink);
 }
 .download h2 .dot {
-  color: var(--volt);
+  color: var(--ember);
 }
 .download p {
   font-size: 16px;
@@ -621,27 +633,32 @@ a {
   margin-top: 6px;
 }
 
+/* Store badges read as premium dark chips — small high-contrast objects,
+   matching the scoreboard's instrument language. */
 .store-badge {
   display: inline-flex;
   align-items: center;
   gap: 14px;
   padding: 12px 22px;
   border-radius: 12px;
-  background: var(--graphite);
-  border: 1px solid var(--steel-2);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  color: var(--paper);
   cursor: pointer;
-  transition: transform 0.18s ease, border-color 0.18s ease,
-    background 0.18s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   min-height: 58px;
 }
 .store-badge:hover {
   transform: translateY(-2px);
-  border-color: var(--bone);
-  background: var(--graphite-2);
+  box-shadow: 0 16px 30px -16px rgba(16, 20, 18, 0.5);
 }
 .store-icon {
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
 }
 .store-text {
   display: flex;
@@ -653,21 +670,21 @@ a {
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--titanium);
+  color: var(--bone-dim);
 }
 .store-title {
   font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.01em;
-  color: var(--bone);
+  color: var(--paper);
 }
 
 /* ------------------------------ Footer -------------------------------- */
 .footer {
-  border-top: 1px solid var(--hairline);
+  border-top: 1px solid var(--line);
   padding: 40px var(--pad-x);
-  background: var(--ink);
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -676,20 +693,20 @@ a {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--titanium-dim);
+  color: var(--muted);
 }
 .footer-nav {
   display: flex;
   gap: 24px;
 }
 .footer-nav a {
-  color: var(--titanium);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   transition: color 0.2s;
 }
 .footer-nav a:hover {
-  color: var(--volt);
+  color: var(--volt-ink);
 }
 
 /* ----------------------------- Animations ----------------------------- */
@@ -712,27 +729,25 @@ a {
 
 @keyframes livePulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(198, 242, 78, 0.55);
+    box-shadow: 0 0 0 0 rgba(79, 122, 13, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 9px rgba(198, 242, 78, 0);
+    box-shadow: 0 0 0 9px rgba(79, 122, 13, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(198, 242, 78, 0);
+    box-shadow: 0 0 0 0 rgba(79, 122, 13, 0);
   }
 }
-.tape-rec .dot {
-  animation-name: livePulseEmber;
-}
+
 @keyframes livePulseEmber {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 61, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 90, 46, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(255, 107, 61, 0);
+    box-shadow: 0 0 0 8px rgba(255, 90, 46, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 61, 0);
+    box-shadow: 0 0 0 0 rgba(255, 90, 46, 0);
   }
 }
 

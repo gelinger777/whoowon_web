@@ -244,8 +244,8 @@ const styles = {
   spinner: {
     width: "40px",
     height: "40px",
-    border: "3px solid rgba(237,234,226,0.12)",
-    borderTop: "3px solid #c6f24e",
+    border: "3px solid rgba(16,20,18,0.12)",
+    borderTop: "3px solid #4f7a0d",
     borderRadius: "50%",
     animation: "spin 0.8s linear infinite"
   },
@@ -260,7 +260,7 @@ const styles = {
     fontSize: "24px",
     fontWeight: 800,
     marginBottom: "10px",
-    color: "#ff6b3d"
+    color: "#ff5a2e"
   },
   cardContent: {
     display: "flex",
@@ -287,18 +287,18 @@ const styles = {
   },
   subtitle: {
     fontSize: "16px",
-    color: "#8a938b"
+    color: "#6a716a"
   },
   highlight: {
-    color: "#c6f24e",
+    color: "#4f7a0d",
     textTransform: "uppercase" as const,
     fontWeight: 800,
     letterSpacing: "0.05em"
   },
   matchBox: {
     width: "100%",
-    background: "rgba(9, 13, 22, 0.4)",
-    border: "1px solid rgba(255,255,255,0.06)",
+    background: "rgba(16, 20, 18, 0.035)",
+    border: "1px solid rgba(16,20,18,0.10)",
     borderRadius: "18px",
     padding: "20px 24px",
     display: "flex",
@@ -316,7 +316,7 @@ const styles = {
   competitorName: {
     fontSize: "16px",
     fontWeight: 700,
-    color: "#f8fafc"
+    color: "#11150f"
   },
   youBadge: {
     fontSize: "10px",
@@ -330,7 +330,7 @@ const styles = {
   vs: {
     fontSize: "14px",
     fontWeight: 900,
-    color: "#64748b",
+    color: "#9aa099",
     textTransform: "uppercase" as const
   },
   btnFull: {
@@ -338,6 +338,6 @@ const styles = {
   },
   hintText: {
     fontSize: "13px",
-    color: "#64748b"
+    color: "#6a716a"
   }
 };
